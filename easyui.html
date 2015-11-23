@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>easyUI</title>
+    <link rel="stylesheet" href="css/easyui.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+<div id="dd1" class="dd-demo"></div>
+<div id="dd2" class="dd-demo"></div>
+<div id="dd3" class="dd-demo"></div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#dd1').draggable();
+        $('#dd2').draggable({
+            proxy:'clone'
+        });
+        $('#dd3').draggable({
+            proxy:function(source){
+                var p = $('<div class="proxy">proxy</div>');
+                p.appendTo('body');
+                return p;
+            }
+        });
+    });
+</script>
+</body>
+</html>

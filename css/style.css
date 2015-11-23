@@ -1,0 +1,381 @@
+@charset "UTF-8";
+
+@font-face{
+    font-family:'ionicons';
+    font-style:normal;font-weight:400;
+    src:url(../fonts/ionicons.eot);
+    src:url(../fonts/ionicons.eot?#iefix) format('embedded-opentype'),
+        url(../fonts/ionicons.woff) format('woff'),
+        url(../fonts/ionicons.ttf) format('truetype'),
+        url(../fonts/ionicons.svg) format('svg');
+}
+#clear{
+    clear: both;
+    height:10px;
+}
+input[placeholder]::-moz-placeholder{
+    color:#5aa3fd;
+}
+#header{
+    padding:0;
+    margin: 0;
+    width:100%;
+    /*height:60px;*/
+    background-color: #3280fc;
+}
+.homeForm:hover{
+    cursor: pointer;
+}
+.download{
+    display: inline-block;
+    padding:5px;
+    border:1px solid #fff;
+    width:10%;
+    border-radius: 3px;
+}
+.download:hover{
+    background-color: #0a67fb;
+}
+.container{
+
+    color:#FFF;
+}
+.homeForm,#searchForm{
+    line-height: 60px;
+}
+.icon{
+    font-family: 'ionicons';
+    display: inline-block;
+
+}
+.icon-home:before{
+    content:"\f38f";
+    font-size: 18px;
+    padding:0 0 0 10px;
+}
+#searchForm{
+    padding-top:15px;
+}
+#searchForm>.icon{
+    position:absolute;
+    top:3px;
+}
+#searchInput{
+    border-color: #adccfe;
+    border-radius: 18px;
+    background-color: #3280fc;
+    color:#FFF;
+    padding-left:35px;
+}
+.icon-search:before{
+    content:'\f423';
+    font-size: 18px;
+    padding:0 0 0 10px;
+}
+
+.icon-download-alt:before{
+    content:'\f41f';
+    font-size: 21px;
+    color:#ddd;
+}
+.icon-comments-alt:before{
+     content:'\f3f0';
+     font-size: 21px;
+     color:#ddd;
+}
+.icon-github:before{
+    content:'\f233';
+    font-size: 21px;
+    color:#ddd;
+}
+.nav-right{
+    padding-top:10px;
+
+}
+.nav-right > ul{
+    float:right;
+    list-style: none;
+}
+
+.nav-right >ul li{
+    display: inline-block;
+    float:left;
+    text-align: center;
+    width:38px;
+    height:40px;
+    border-radius: 3px;
+    padding-top:2px;
+}
+.nav-right > ul li:hover{
+    background-color: #2866ca;
+
+}
+#article>.container{
+    /*border:1px solid red;*/
+    color:#000;
+}
+.col{
+    width:232px;
+}
+
+
+
+.basic-intro,.control-intro,.group-intro,.js-intro,.view-intro{
+    margin-left: 10px;
+    margin-top: 5px;
+    border:1px solid #fff;
+    width:100%;
+    border-radius:5px;
+
+}
+
+.icon-explain{
+    padding-top: 5px;
+    display: block;
+    float: left;
+}
+.chapter-name{
+    display: inline-block;
+    /*border:1px solid blue;*/
+    line-height: 40px;
+    font-size:15px;
+    padding-left:10px;
+}
+.explain-heading{
+    /*border:1px solid red;*/
+    /*height:40px;*/
+    padding-left:10px;
+}
+
+.explain-content{
+    /*border: 1px solid red;*/
+    background-color: #fbfbfb;
+    border-top: 1px dashed #ccc;
+}
+.explain-content ul{
+    padding-top:15px;
+    padding-left:10px;
+    list-style: none;
+}
+.explain-content ul li{
+    height:30px;
+    line-height: 30px;
+    /*border: 1px solid #fff;*/
+    padding-left:25px;
+    width:175px;
+    border-radius: 5px;
+    transition: background-color 0.1s;
+}
+
+/*基础*/
+#chapter-basic > .chapter-heading >.chapter-basic:before{
+    content:'\f12e';
+    font-size: 18px;
+    color:#5b99fd;
+}
+.basic-intro > .explain-heading>.icon-explain:before{
+    content:"\f141";
+    font-size: 21px;
+    color:#5b99fd;
+
+}
+#chapter-basic > .chapter-heading>.name{
+    color:#5b99fd;
+    font-weight: bold;
+}
+.basic-intro > .explain-heading > .chapter-name a:hover{
+    color:#418dfc;
+}
+.basic-intro > .explain-content ul li:hover{
+    background-color: #ebf2f9;
+}
+.basic-intro-chaptername{
+    color:#418dfc;
+}
+.basic-intro-hover{
+    border-color:#e5e5e5;
+}
+.basic-intro-alway{
+    border-color:#FFF;
+}
+.basic-intro-click{
+    border-color:#84b3fd;
+    box-shadow:0 0 3px #84b3fd;
+
+}
+.basic-intro-unclick{
+    border-color:#e5e5e5;
+}
+.basic-intro-a-hover{
+    background-color:#ebf2f9;
+}
+/*控制*/
+#chapter-control > .chapter-heading >.chapter-basic:before{
+    content:'\f12e';
+    font-size: 18px;
+    color:#38b03f;
+}
+.control-intro > .explain-heading>.icon-explain:before{
+    content:"\f141";
+    font-size: 21px;
+    color:#38b03f;
+
+}
+#chapter-control > .chapter-heading>.name{
+    color:#5abf99;
+    font-weight: bold;
+}
+.control-intro >.explain-heading > .chapter-name a:hover{
+    color:#38b03f;
+}
+.control-intro > .explain-content ul li:hover{
+    background-color: #ddf4df;
+}
+.control-intro-chaptername{
+    color:#38b03f;
+}
+.control-intro-hover{
+    border-color:#e5e5e5;
+}
+.control-intro-alway{
+    border-color:#FFF;
+}
+.control-intro-click{
+    border-color:#88d08c;
+    box-shadow:0 0 3px #88d08c;
+
+}
+.control-intro-unclick{
+    border-color:#e5e5e5;
+}
+.control-intro-a-hover{
+    background-color:#ddf4df;
+}
+/*组件*/
+#chapter-group > .chapter-heading >.chapter-basic:before{
+    content:'\f12e';
+    font-size: 18px;
+    color:#ea644a;
+}
+.group-intro > .explain-heading>.icon-explain:before{
+    content:"\f141";
+    font-size: 21px;
+    color:#ea644a;
+
+}
+#chapter-group > .chapter-heading>.name{
+    color:#ea644a;
+    font-weight: bold;
+}
+.group-intro >.explain-heading > .chapter-name a:hover{
+    color:#ea644a;
+}
+.group-intro > .explain-content ul li:hover{
+    background-color: #ffe5e0;
+}
+.group-intro-chaptername{
+    color:#ea644a;
+}
+.group-intro-hover{
+    border-color:#e5e5e5;
+}
+.group-intro-alway{
+    border-color:#FFF;
+}
+.group-intro-click{
+    border-color:#f3a292;
+    box-shadow:0 0 3px #f3a292;
+
+}
+.group-intro-unclick{
+    border-color:#e5e5e5;
+}
+.group-intro-a-hover{
+    background-color:#ffe5e0;
+}
+
+/*js插件*/
+#chapter-js > .chapter-heading >.chapter-basic:before{
+    content:'\f12e';
+    font-size: 18px;
+    color:#bd7b46;
+}
+.js-intro > .explain-heading>.icon-explain:before{
+    content:"\f141";
+    font-size: 21px;
+    color:#bd7b46;
+
+}
+#chapter-js > .chapter-heading>.name{
+    color:#bd7b46;
+    font-weight: bold;
+}
+.js-intro >.explain-heading > .chapter-name a:hover{
+    color:#bd7b46;
+}
+.js-intro > .explain-content ul li:hover{
+    background-color: #f7ebe1;
+}
+.js-intro-chaptername{
+    color:#bd7b46;
+}
+.js-intro-hover{
+    border-color:#e5e5e5;
+}
+.js-intro-alway{
+    border-color:#FFF;
+}
+.js-intro-click{
+    border-color:#d7b090;
+    box-shadow:0 0 3px #d7b090;
+
+}
+.js-intro-unclick{
+    border-color:#e5e5e5;
+}
+.js-intro-a-hover{
+    background-color:#f7ebe1;
+}
+
+/*view*/
+#chapter-view > .chapter-heading >.chapter-basic:before{
+    content:'\f12e';
+    font-size: 18px;
+    color:#8666bb;
+}
+.view-intro > .explain-heading>.icon-explain:before{
+    content:"\f141";
+    font-size: 21px;
+    color:#8666bb;
+
+}
+#chapter-view > .chapter-heading>.name{
+    color:#8666bb;
+    font-weight: bold;
+}
+.view-intro >.explain-heading > .chapter-name a:hover{
+    color:#8666bb;
+}
+.view-intro > .explain-content ul li:hover{
+    background-color: #f5eeff;
+}
+.view-intro-chaptername{
+    color:#8666bb;
+}
+.view-intro-hover{
+    border-color:#e5e5e5;
+}
+.view-intro-alway{
+    border-color:#FFF;
+}
+.view-intro-click{
+    border-color:#b6a3d4;
+    box-shadow:0 0 3px #b6a3d4;
+
+}
+.view-intro-unclick{
+    border-color:#e5e5e5;
+}
+.view-intro-a-hover{
+    background-color:#f5eeff;
+}

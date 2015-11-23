@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>仿京东</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/jd.css">
+    <link rel="stylesheet" href="css/scrollimg.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/slide.js"></script>
+    <script src="js/jd.js" ></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/jd_controllers.js"></script>
+
+</head>
+<body ng-app="controllerApp">
+<!--顶部-->
+<div id="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header_city">送至：江苏<span class="icon icon-chevron-down"></span></div>
+            </div>
+            <div class="col-lg-9">
+                <div class="header_nav">
+                    <ul class="ulnav">
+                        <li><a href="#" class="link-login">你好，请登录  </a><a href="#" class="link-register">免费注册</a></li>
+                        <li class="spacer"></li>
+                        <li>我的订单</li>
+                        <li class="spacer"></li>
+                        <li>我的京东<span class="icon icon-chevron-down"></span></li>
+                        <li class="spacer"></li>
+                        <li>京东会员</li>
+                        <li class="spacer"></li>
+                        <li>企业采购</li>
+                        <li class="spacer"></li>
+                        <li><span class="icon icon-phone"></span>手机京东<span class="icon icon-chevron-down"></span></li>
+                        <li class="spacer"></li>
+                        <li>关注京东<span class="icon icon-chevron-down"></span></li>
+                        <li class="spacer"></li>
+                        <li>客户服务<span class="icon icon-chevron-down"></span></li>
+                        <li class="spacer"></li>
+                        <li>网络导航<span class="icon icon-chevron-down"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--顶部2-->
+<div id="header2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+              <div class="header2_img"><img src="images/jd_header.jpg" width="301" height="55"></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="header2_search">
+                    <input name="search" class="search_input">
+                    <button class="search_button">搜索</button>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="header2_shopping">
+                    <span class="icon icon-github"></span>
+                    <a href="#" class="shopping_text">我的购物车</a>
+                    <span class="icon icon-right"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--头部分类-->
+<div id="header_class">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="allclass">
+                    全部商品分类
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="class_main">
+                    <ul>
+                        <li>服装城</li>
+                        <li>美妆馆</li>
+                        <li>美食</li>
+                        <li>全球购</li>
+                        <li>闪购</li>
+                        <li>团购</li>
+                        <li>夺宝岛</li>
+                        <li>金融</li>
+                        <li>智能</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!--头部分类2-->
+<div id="header_class2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 dd">
+                <div class="allclass2" ng-controller="classList">
+                    <expander class="class" ng-repeat="var in classes" cid="{{var.index}}" expandertitle="{{var.name}}">
+
+
+
+                    </expander>
+
+                  <!--<div class="class" cid="1"><span class="class_text">家用电器</span><span class="icon icon-class-right"></span>-->
+
+
+                  <!--</div>-->
+                  <!--<div class="class" cid="2"><span class="class_text">手机、数码、京东通信</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="3"><span class="class_text">电脑、办公</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="4"><span class="class_text">家居、家具、家装</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="5"><span class="class_text">男装、女装、内衣、珠宝</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="6"><span class="class_text">个护化妆</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="7"><span class="class_text">鞋靴、箱包、钟表、奢侈品</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="8"><span class="class_text">运动户外</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="9"><span class="class_text">汽车、汽车用品</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="10"><span class="class_text">母婴、玩具乐器</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="11"><span class="class_text">食品、酒类、生鲜、特产</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="12"><span class="class_text">营养保健</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="13"><span class="class_text">图书、音像、电子书</span><span class="icon icon-class-right"></span> </div>-->
+                  <!--<div class="class" cid="14"><span class="class_text">彩票、旅行、充值、票务</span><span class="icon icon-class-right"></span></div>-->
+                  <!--<div class="class" cid="15"><span class="class_text">理财、众筹、白条、保险</span><span class="icon icon-class-right"></span></div>-->
+                </div>
+
+            </div>
+            <div class="col-lg-7">
+                <div class="ck-slide">
+
+                        <ul class="ck-slide-wrapper">
+                            <li>
+                                <a href="http://www.dowebok.com/"><img src="images/section.jpg" alt="" ></a>
+                            </li>
+                            <li style="display:none">
+                                <a href="http://www.dowebok.com/144.html"><img src="images/section2.jpg" alt=""></a>
+                            </li>
+                            <li style="display:none">
+                                <a href="javascript:"><img src="images/section3.jpg" alt=""></a>
+                            </li>
+                            <li style="display:none">
+                                <a href="javascript:"><img src="images/section4.jpg" alt=""></a>
+                            </li>
+                            <li style="display:none">
+                                <a href="javascript:"><img src="images/section5.jpg" alt=""></a>
+                            </li>
+                        </ul>
+                        <a href="javascript:" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:" class="ctrl-slide ck-next">下一张</a>
+                        <div class="ck-slidebox">
+                            <div class="slideWrap">
+                                <ul class="dot-wrap">
+                                    <li class="current"><span>1</span></li>
+                                    <li><span>2</span></li>
+                                    <li><span>3</span></li>
+                                    <li><span>4</span></li>
+                                    <li><span>5</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="kuaipao">
+                    <div class="kuaipao_title">京东快报<div class="kuaipao_more">更多</div></div>
+                    <div class="kuaipao_list">
+                        <ul>
+                            <li>[特惠]京东啤酒节 满199减100</li>
+                            <li>[公告]京东长春仓库正式启动运营</li>
+                            <li>[特惠]美妆跨品类最高满199减100</li>
+                            <li>[公告]京东获阳澄湖大闸蟹协会认证</li>
+                            <li>[特惠]全球购全场2折起199减100</li>
+                        </ul>
+                    </div>
+                    <div class="kuaipao_service_title">生活服务</div>
+                    <div class="kuaipao_service">
+                        <ul>
+                            <li>话费</li>
+                            <li>机票</li>
+                            <li>电影票</li>
+                            <li>游戏</li>
+                            <li>彩票</li>
+                            <li>团购</li>
+                            <li>酒店</li>
+                            <li>水电煤</li>
+                            <li>众筹</li>
+                            <li>保险</li>
+                            <li>理财</li>
+                            <li>白条</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br/>
+<!--1F-->
+<div class="oneF F1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="oneF_title">
+                    <span>1F</span>
+                    <span class="oneF_text">服装鞋包</span>
+                    <div class="oneF_tabs" >
+                        <ul>
+                            <li class="thistab" data-index="1"><a href="#">大牌</a></li>
+                            <li  data-index="2"><a href="#">男装</a></li>
+                            <li data-index="3"><a href="#">女装</a></li>
+                            <li data-index="4"><a href="#">鞋靴</a></li>
+                            <li data-index="5"><a href="#">箱包</a></li>
+                            <li data-index="6"><a href="#">内衣配饰</a></li>
+                            <li data-index="7"><a href="#">珠宝首饰</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="oneF_content">
+                    <ul id="oneF_ul_1">
+                    <li ><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                    <li><a href="#">大牌</a></li>
+                </ul>
+                <ul id="oneF_ul_2" style="display: none">
+                    <li ><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                    <li><a href="#">男装</a></li>
+                </ul>
+                <ul id="oneF_ul_3" style="display: none">
+                    <li ><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                    <li><a href="#">女装</a></li>
+                </ul>
+                <ul id="oneF_ul_4" style="display: none">
+                    <li ><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                    <li><a href="#">鞋靴</a></li>
+                </ul>
+                <ul id="oneF_ul_5" style="display: none">
+                    <li ><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                    <li><a href="#">箱包</a></li>
+                </ul>
+                <ul id="oneF_ul_6" style="display: none">
+                    <li ><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                    <li><a href="#">内衣配饰</a></li>
+                </ul>
+                <ul id="oneF_ul_7" style="display: none">
+                    <li ><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                    <li><a href="#">珠宝首饰</a></li>
+                </ul>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br/>
+<!--2F-->
+<div class="oneF F2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="oneF_title">
+                    <span>2F</span>
+                    <span class="oneF_text">美容化妆</span>
+                    <div class="oneF_tabs" >
+                        <ul>
+                            <li class="thistab" data-index="8"><a href="#">热门</a></li>
+                            <li  data-index="9"><a href="#">国际大牌</a></li>
+                            <li data-index="10"><a href="#">居家用货</a></li>
+                            <li data-index="11"><a href="#">家装建材</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="oneF_content">
+                    <ul id="oneF_ul_8">
+                        <li ><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                        <li><a href="#">热门</a></li>
+                    </ul>
+                    <ul id="oneF_ul_9" style="display: none">
+                        <li ><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                        <li><a href="#">国际大牌</a></li>
+                    </ul>
+                    <ul id="oneF_ul_10" style="display: none">
+                        <li ><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                    </ul>
+                    <ul id="oneF_ul_11" style="display: none">
+                        <li ><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br/>
+<!--3F-->
+<div class="oneF F3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="oneF_title">
+                    <span>3F</span>
+                    <span class="oneF_text">运动健身</span>
+                    <div class="oneF_tabs" >
+                        <ul>
+                            <li class="thistab" data-index="12"><a href="#">大牌</a></li>
+                            <li  data-index="13"><a href="#">厨房用品</a></li>
+                            <li data-index="14"><a href="#">居家用货</a></li>
+                            <li data-index="15"><a href="#">家装建材</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="oneF_content">
+                    <ul id="oneF_ul_12">
+                        <li ><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                        <li><a href="#">大牌</a></li>
+                    </ul>
+                    <ul id="oneF_ul_13" style="display: none">
+                        <li ><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                    </ul>
+                    <ul id="oneF_ul_14" style="display: none">
+                        <li ><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                    </ul>
+                    <ul id="oneF_ul_15" style="display: none">
+                        <li ><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<br/>
+<!--4F-->
+<div class="oneF F4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="oneF_title">
+                    <span>4F</span>
+                    <span class="oneF_text">居家生活</span>
+                    <div class="oneF_tabs" >
+                        <ul>
+                            <li class="thistab" data-index="16"><a href="#">床上用品</a></li>
+                            <li  data-index="17"><a href="#">厨房用品</a></li>
+                            <li data-index="18"><a href="#">居家用货</a></li>
+                            <li data-index="19"><a href="#">家装建材</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="oneF_content">
+                    <ul id="oneF_ul_16">
+                        <li ><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                        <li><a href="#">床上用品</a></li>
+                    </ul>
+                    <ul id="oneF_ul_17" style="display: none">
+                        <li ><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                        <li><a href="#">厨房用品</a></li>
+                    </ul>
+                    <ul id="oneF_ul_18" style="display: none">
+                        <li ><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                        <li><a href="#">居家用货</a></li>
+                    </ul>
+                    <ul id="oneF_ul_19" style="display: none">
+                        <li ><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                        <li><a href="#">家装建材</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<!--左边小菜单导航-->
+<div class="left_nav">
+<ul>
+    <li><span>1F</span><span class="left_nav_span_2">服装</span></li>
+    <li><span>2F</span><span class="left_nav_span_2">美容</span></li>
+    <li><span>3F</span><span class="left_nav_span_2">运动</span></li>
+    <li><span>4F</span><span class="left_nav_span_2">居家</span></li>
+</ul>
+</div>
+<!--右边小导航-->
+
+<div class="right_nav_div">
+    <div class="right_nav_1">
+        <!--<span class="ico">1F</span>-->
+        <!--<span class="tab-text">购物</span>-->
+    </div>
+</div>
+<div style="display: none" class="leftnavrecort"></div>
+<div class="clear"></div>
+<div class="city_class" style="overflow:hidden;">
+    <ul>
+        <li>北京</li>
+        <li>天津</li>
+        <li>上海</li>
+        <li>南京</li>
+        <li>重庆</li>
+        <li>湘乡</li>
+        <li>黑龙江</li>
+        <li>海南</li>
+        <li>河南</li>
+        <li>河北</li>
+        <li>新乡</li>
+    </ul>
+
+</div>
+
+<br/>
+
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!--左边菜单导航小分类-->
+<div class="hidesubclass">
+
+    <div class="subclassmain cat1 subclasshide">
+        <dl>
+            <dt><a href="#">大家电</a></dt>
+            <dd class="mfor">
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">生活</a></dt>
+            <dd>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+                <a href="#">平板电话</a>
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+    </div>
+
+
+
+    <div class="subclassmain cat2 subclasshide">
+        <dl>
+            <dt><a href="#">手机</a></dt>
+            <dd class="mfor">
+                <a href="#">手机通讯</a>
+                <a href="#">对讲机</a>
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">运营商</a></dt>
+            <dd>
+                <a href="#">合约机</a>
+                <a href="#">选号码</a>
+                <a href="#">装宽带</a>
+
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat2 subclasshide">
+        <dl>
+            <dt><a href="#">手机</a></dt>
+            <dd >
+                <a href="#">手机通讯</a>
+                <a href="#">对讲机</a>
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">运营商</a></dt>
+            <dd>
+                <a href="#">合约机</a>
+                <a href="#">选号码</a>
+                <a href="#">装宽带</a>
+
+            </dd>
+
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat3 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat4 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat5 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat6 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat7 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat8 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+    <div class="subclassmain cat15 subclasshide">
+        <dl>
+            <dt><a href="#">电脑整</a></dt>
+            <dd class="mfor">
+                <a href="#">笔记本</a>
+                <a href="#">超极本</a>
+                <a href="#">游戏本</a>
+                <a href="#">平板电脑</a>
+                <a href="#">平板电脑配件</a>
+                <a href="#">台式机</a>
+                <a href="#">一体机</a>
+                <a href="#">服务器/工作站</a>
+                <a href="#">笔记本配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">CPU</a>
+                <a href="#">主板</a>
+                <a href="#">显卡</a>
+                <a href="#">硬盘</a>
+                <a href="#">SSD固态硬盘</a>
+                <a href="#">内存</a>
+                <a href="#">机箱</a>
+                <a href="#">电源</a>
+                <a href="#">显示器</a>
+                <a href="#">刻录机/光驱</a>
+                <a href="#">声卡/扩展卡</a>
+                <a href="#">散热器</a>
+                <a href="#">装机配件</a>
+                <a href="#">组装电脑</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">鼠标</a>
+                <a href="#">键盘</a>
+                <a href="#">网络仪表仪器</a>
+                <a href="#">U盘</a>
+                <a href="#">移动硬盘</a>
+                <a href="#">鼠标垫</a>
+                <a href="#">摄像头</a>
+                <a href="#">线缆</a>
+                <a href="#">电玩</a>
+                <a href="#">手写板</a>
+                <a href="#">外置盒</a>
+                <a href="#">电脑工具</a>
+                <a href="#">电脑清洁</a>
+                <a href="#">UPS</a>
+                <a href="#">插座</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">游戏机</a>
+                <a href="#">游戏耳机</a>
+                <a href="#">手柄/方向盘</a>
+                <a href="#">游戏软件</a>
+                <a href="#">游戏周边</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 路由器</a>
+                <a href="#">网卡</a>
+                <a href="#">交换机</a>
+                <a href="#">网络存储</a>
+                <a href="#">4G/3G上网</a>
+                <a href="#">网络盒子</a>
+                <a href="#">网络配件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#">投影机</a>
+                <a href="#">投影配件</a>
+                <a href="#">多功能一体机</a>
+                <a href="#">打印机</a>
+                <a href="#">传真设备</a>
+                <a href="#">验钞/点钞机</a>
+                <a href="#">扫描设备</a>
+                <a href="#">复合机</a>
+                <a href="#">碎纸机</a>
+                <a href="#">考勤机</a>
+                <a href="#">收款/POS机</a>
+                <a href="#">会议音频视频</a>
+                <a href="#">保险柜</a>
+                <a href="#">装订/封装机</a>
+                <a href="#">安防监控</a>
+                <a href="#">办公家具</a>
+                <a href="#">白板</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 硒鼓/墨粉</a>
+                <a href="#">墨盒</a>
+                <a href="#">色带</a>
+                <a href="#">纸类</a>
+                <a href="#">办公文具</a>
+                <a href="#">学生文具</a>
+                <a href="#">文件管理</a>
+                <a href="#">本册/便签</a>
+                <a href="#">计算器</a>
+                <a href="#">笔类</a>
+                <a href="#">画具画材</a>
+                <a href="#">财会用品</a>
+                <a href="#"> 刻录碟片/附件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+        <dl>
+            <dt><a href="#">电脑整机</a></dt>
+            <dd >
+                <a href="#"> 延保服务</a>
+                <a href="#">上门安装</a>
+                <a href="#">维修保养</a>
+                <a href="#">电脑软件</a>
+            </dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+</body>
+</html>

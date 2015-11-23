@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/numberMemory.css">
+    <script type="text/javascript">
+        var  sss = "362-5-1";
+        var reg = /[\-].*/;
+        console.log(sss.replace(reg,""));
+        //利用空对象作为中介，直接继承父
+        function extend(child,parent){
+            function F(){}
+            F.prototype = parent.prototype;
+            child.prototype = new F();
+            child.prototype.constructor = child;
+        }
+        //拷贝继承
+        function extend2(child,parent){
+            var p = parent.prototype;
+            var c = child.prototype;
+            for(var i in p){
+                c[i] = p[i];
+            }
+
+        }
+        function Animal(){
+//            this.specis = "动物";
+        }
+        Animal.prototype.specis = "动物";
+        function cat(name,color){
+            this.name = name;
+            this.color = color
+        }
+        cat.prototype.type = "猫";
+        cat.prototype.message = function(){
+            console.log("here");
+
+        }
+        function c(){}
+        c.prototype = Animal.prototype;
+
+//        cat.prototype = new Animal();
+//        cat.prototype.constructor = cat;
+        cat.prototype = new c();
+        cat.prototype.constructor = cat;
+        var cat1 = new cat("FUCK");
+        console.log(cat1.specis);
+        console.log(Animal.prototype.constructor);
+        extend2(cat,Animal);
+        var cat2 = new cat();
+        console.log(cat2.specis);
+
+        var china = {nation:'中国'};
+        var doctor = {career:'医生'};
+        function object(o){
+            function b(){};
+            b.prototype = o;
+            return new b();
+        }
+        var Doctor = object(china);
+        console.log(Doctor.nation);
+        function extendCopy(o){
+            var c = {};
+            for(var i in c){
+                c[i] = o[i];
+            }
+            return c;
+        }
+        china.birthplace = ['北京','上海'];
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@font-face {
+    font-family: myfont;
+    src: url('fonts/tenyang.ttf');
+}
+body{background-color: #000;padding-top:80px;}
+.head_text{color:#fff;font-size: 4em}
+a{
+    text-decoration:none;
+    outline:none;color:red;
+    font-size:3em;
+    font-family: myfont;
+    /*padding:10px;*/
+    /*background-color: blue;*/
+    /*width:100%;*/
+    display: block;
+}
+a:hover{color:#fff;text-decoration:none;}
+a:active {text-decoration:none;}
+a:focus { text-decoration:none;outline:0; color:#fff;}

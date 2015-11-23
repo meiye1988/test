@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>数字记忆力</title>
+
+    <script>
+        //要猜的数字的个数
+        var Number = 12;
+        var Rowi,Colj;
+        //X列X行
+        var rows = 2,cols = 2;
+        //默记时间
+        var conTime = 60;
+        var memoryAry = new Array();
+        function addLoadEvent(func){
+            var onload = window.onload;
+            if(typeof window.onload!='function'){
+                window.onload = func;
+            }else{
+                window.onload = function(){
+                    onload();
+                    func();
+                }
+            }
+        }
+        function getRandom(startNumber,endNumber){
+            var startNumber = startNumber ? startNumber : 1;
+            var endNumber = endNumber ? endNumber : 100;
+            var numberDiff = parseInt(endNumber - startNumber + 1);
+            return Math.floor(Math.random() * numberDiff + startNumber);
+        }
+        function createNumberMemory(){
+
+            var table = document.getElementById("table");
+            for(Rowi = 0;Rowi < rows;Rowi++) {
+                memoryAry[Rowi] = new Array();
+                var tr = document.createElement("tr");
+                for (Colj = 0; Colj < cols; Colj++) {
+
+                    var td = document.createElement("td");
+                    var randNumber = getRandom(10, 20);
+                    memoryAry[Rowi][Colj] = randNumber;
+                    var createRandNumber = document.createTextNode(randNumber);
+
+                    td.appendChild(createRandNumber);
+                    tr.appendChild(td);
+
+                }
+                table.appendChild(tr);
+            }
+
+        }
+        addLoadEvent(createNumberMemory);
+        addLoadEvent(function(){
+        });
+        function startGame(){
+            var newMemoryAry;
+            var table = document.getElementById("table");
+            console.log(table.childNodes);
+            while(table.hasChildNodes()){
+                table.removeChild(table.firstChild);
+            }
+            for(Rowi = 0;Rowi < rows;Rowi++) {
+                var tr = document.createElement("tr");
+                for (Colj = 0; Colj < cols; Colj++) {
+
+                    var td = document.createElement("td");
+                    var input = document.createElement('input');
+                    input.type = "text";
+                    input.name = "newMemory_" + Rowi + "_" + Colj;
+                    input.className = "input";
+                    td.appendChild(input);
+                    tr.appendChild(td);
+
+                }
+                table.appendChild(tr);
+            }
+            var button = document.createElement("button");
+            var buttonText = document.createTextNode('确定');
+            button.appendChild(buttonText);
+            document.body.appendChild(button);
+            button.onclick = function(){
+                for(Rowi = 0;Rowi < rows;Rowi++) {
+                    for (Colj = 0; Colj < cols; Colj++) {
+                        var inputName = document.getElementsByName("newMemory_" + Rowi + "_" + Colj)[0];
+
+                        if(inputName.value!=memoryAry[Rowi][Colj]){
+                            console.log("memoryAry["+Rowi+"]["+Colj+"]答案错误");
+                        }
+
+                    }
+                }
+            }
+        }
+        function setCookie(cname, cvalue, exdays) {
+            var _date = new Date();
+            _date.setTime(_date.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + _date.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+        function delCookie(name) {
+            setCookie(name, "", -1);
+        }
+    </script>
+    <style type="text/css">
+        .input{border:0;}
+    </style>
+</head>
+<body>
+<table id="table" border="1" cellspacing="1" cellpadding="1"></table>
+</body>
+<button onclick="startGame()">开始</button>
+</html>

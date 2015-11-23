@@ -1,0 +1,16 @@
+[type="password"]{
+    border: 5px solid #ccc;
+}
+[href*=".com"]{
+    color: orange;
+}
+ul > li{
+    border:1px solid red;
+}
+p::first-line{color: red}
+div{width:200px;height:200px;}
+#a{background: red;float: left}
+#b{background: yellow;float: left}
+#c{background: blue;float: left}
+#d{background: blue;clear: both;}
+div{justify-content:;}

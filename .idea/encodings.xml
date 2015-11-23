@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/js/jd.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/jd_controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/activity-detail.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/activity.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/activitylist.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/answerDetail.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/answerlist.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/editActivity.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/editQuestion.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/foot.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/header.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/menu.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/newActivity.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/newQuestion.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/questionlist.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/admin/user.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/course-detail.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/course-left-menu.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/course.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/css/bootstrap-datepicker.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/css/bootstrap-dialog.min.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/footer.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/forgetpwd.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/bootstrap-datepicker.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/bootstrap-dialog.min.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/daterangepicker.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/jquery.easing.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/jyg.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/js/moment.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/login.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/logintest.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/pubilc_question.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/question-detail.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/question-left-menu.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/question-record-view.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/question-record.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/question.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/register.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/train.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/upload.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/user-avatar.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/user-left-menu.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/user-password.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../jiyige/user.php" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

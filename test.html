@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>闭包演示</title>
+    <style type="text/css">
+        p {background:gold;}
+    </style>
+    <script type="text/javascript">
+//        function init() {
+//            var pAry = document.getElementsByTagName("p");
+//            for( var i=0; i<pAry.length; i++ ) {
+//                pAry[i].onclick = (function(j){
+//                    return function(){
+//                        alert(j);
+//                    };
+//                })(i);
+//            }
+//        }
+        var i,j;
+        var num = 0;
+        outermost:
+        for(i=0;i<10;i++){
+            for(j=0;j<10;j++){
+                if(i==5 && j==5){
+                    break outermost;
+                }
+                num++;
+            }
+        }
+        console.log(num);
+
+        function sayhi(){
+            console.log("he say:"+arguments[0]+arguments[1]);
+        }
+        sayhi("123","123");
+        var s = "string";
+        console.log(typeof(s));
+        var colors = ["red","blue","black"];
+        var colorsstring = colors.valueOf();
+        console.log(typeof colorsstring);
+        var newarray = [100,-5,8,41,1,62,152,200];
+        newarray.sort(function(a,b){return b-a});
+        console.log(newarray);
+        function sum(sum1,sum2){
+            return sum1 + sum2;
+        }
+        function callsum1(num1,num2){
+            return sum(num1,num2);
+        }
+        console.log(callsum1(10,20));
+        function Person(){
+            this.name = "wnag";
+            this.age = 45;
+        }
+        Person.prototype.setname = function(){
+            return this.name;
+        }
+        var person1 = new Person();
+        console.log(person1.setname());
+        function baseClass(){
+            this.showmsg = function(){
+                console.log("baseclass::showmsg");
+            }
+        }
+        function extendClass(){
+            this.showmsg = function(){
+                console.log("extendClass::showmsg")
+            }
+        }
+        extendClass.prototype = new baseClass();
+        var instance = new extendClass();
+        instance.showmsg(); // 显示baseClass::showMsg
+        var baseinstance = new baseClass();
+        baseinstance.showmsg.call(instance);
+
+        function cat(){
+
+        }
+        cat.prototype.name = "food";
+        cat.prototype.say = function(){
+            console.log("wo say is "+this.name);
+        }
+        var catclass = new cat();
+        catclass.say();
+        //但是如果我们有一个对象 dog = {name:"fiid"};,我们不想对它重新定义say方法，那么方法如下
+        var dog = {name:"fiid"};
+        catclass.say.call(dog);
+        //所以，可以看出call和apply是为了动态改变this而出现的，当一个object没有某个方法，但是其他的有，我们可以借助call或apply用其它对象的方法来操作。
+//        function addclick(obj){
+//            var pAry = document.getElementsByTagName("p");
+//            for( var i=0; i<pAry.length; i++ ) {
+//                    if( pAry[i]==obj){
+//                        console.log(i);
+//                        break;
+//                    }
+//            }
+//        }
+    </script>
+</head>
+<body>
+<!--<p onclick="addclick(this)">产品 0</p>-->
+<!--<p onclick="addclick(this)">产品 1</p>-->
+<!--<p onclick="addclick(this)">产品 2</p>-->
+<!--<p onclick="addclick(this)">产品 3</p>-->
+<!--<p onclick="addclick(this)">产品 4</p>-->
+</body>
+</html>

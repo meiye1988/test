@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery slimMenu</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/slimmenu.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Lucida Console', sans-serif;
+            padding: 0;
+        }
+        a, a:active { text-decoration: none }
+    </style>
+
+</head>
+<body>
+
+<br/>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">极忆客图片</span>
+        </div><!-- /.navbar-header -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.php">首页</a></li>
+                <li class="dropdown"><a href="#"  >训练 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown"><a href="#"><span class="nav-menu-span">练习</span><b class="caret_right"></b></a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a href="#"> <span class="nav-menu-span">编码</span></a></li>
+                                <li><a href="#"> <span class="nav-menu-span">联接</span></a></li>
+                                <li><a href="#"><span class="nav-menu-span">地点</span></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><span class="nav-menu-span">在线PK</span></a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" >答疑 <b class="caret"></b></a>
+                    <ul class="dropdown-menu depth_0">
+                        <li><a href="question.php"> <span class="nav-menu-span">在线问答</span></a></li>
+                        <li><a href="question-record.php"><span class="nav-menu-span">答疑记录</span></a></li>
+                        <li><a href="question-record.php"><span class="nav-menu-span">主题问答</span></a></li>
+
+                    </ul>
+
+                </li>
+                <li class="dropdown"><a href="#">活动 <b class="caret"></b></a>
+                    <ul class="dropdown-menu depth_0">
+                        <li><a href="activity-detail.php"><span class="nav-menu-span">最新活动</span></a></li>
+                        <li><a href="activity.php"> <span class="nav-menu-span">全球赛事</span></a></li>
+                        <li><a href="activity.php"> <span class="nav-menu-span">线上活动</span></a></li>
+                    </ul>
+
+                </li>
+                <li><a href="#">商店</a></li>
+            </ul>
+            <!--<ul class="nav navbar-nav navbar-right" id="logined" style="display:none;">-->
+
+                <!--<li class="dropdown"> <a href="#">-->
+                    <!--<img src="image/user-no.png" alt=""  style="width:15%;height:20%;border-radius:4px;margin-top:-7px;">-->
+                    <!--&nbsp;&nbsp;meiye1988</a>-->
+
+                    <!--<ul class="dropdown-menu depth_0">-->
+                        <!--<li><a href="user.php"><span class="nav-menu-span">帐号设置</span></a></li>-->
+                        <!--<li><a href="#"><span class="nav-menu-span">退出</span></a></li>-->
+
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right" id="nologin">
+                <li><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.slimmenu.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    var defaults = {resizewidth:'768'};
+    var resizewidth = defaults.resizewidth;
+    var $menu = $(".navbar-nav");
+    var $window = $(window);
+
+    if (resizewidth < $window.width()){//大于768
+        $menu.find("li").each(function(){
+            console.log($(this).has("ul").length);
+            if($(this).has("ul").length){
+                $(this).on("mouseover",function(){
+                    $(this).find(">ul").show();
+                }).on("mouseleave",function(){
+                    $(this).find(">ul").hide();
+                });
+            }
+        });
+    }else{
+        var $navbartoggle = $(".navbar-toggle");
+        $navbartoggle.on("click",function(){
+            $(".navbar-collapse").toggle();
+        });
+        $menu.find("ul").each(function(){
+            var $li = $(this).parent();
+            $li.find(">a").on("click",function(e){
+                e.preventDefault();
+                e.stopPropagation();
+
+                if($li.hasClass("open")){
+                    $li.removeClass("open");
+                }else{
+                    $li.addClass("open");
+                }
+            });
+        });
+
+    }
+
+});
+
+
+
+</script>
+</body>
+</html>

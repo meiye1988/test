@@ -1,0 +1,16 @@
+.dd-demo{
+    width:150px;
+    height:150px;
+    border: 1px solid red;
+    float: left;
+    padding-left: 5px;
+}
+#dd1{
+    background-color: red;
+}
+#dd2{
+    background-color: blue;
+}
+#dd3{
+    background-color: black;
+}

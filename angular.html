@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+    <meta charset="utf-8">
+    <title>Angluar</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/controllers.js" ></script>
+</head>
+<body ng-app="controllerExample">
+<div ng-controller="TestClick">
+your name :<input type="text" ng-model="yourname" placeholder="world">
+<hr>
+<button ng-click="clearinput()">clear</button>
+hello {{1+2}}
+</div>
+<br/>
+<div ng-controller="PhoneList">
+<ul>
+    <li ng-repeat="phone in phones | orderBy:orderProp">
+        {{phone.type}}
+        <p>{{phone.descript}}</p>
+    </li>
+</ul>
+
+    <p>total : {{phones.length}}</p>
+    </div>
+<div ng-init="price=12;price2=13">
+    {{price+price2}}
+    <p>请输入一个名字：<input ng-model="testname" type="text"></p>
+    <p>Hello <span ng-bind="testname"></span></p>
+</div>
+<div  ng-init="click=false">
+    <button ng-click="click= !click">我变</button>
+    <p ng-hide="click">显示了。</p>
+    <p ng-hide="!click">隐藏了。</p>
+</div>
+<div  ng-init="friends = [
+       {name:'tom', age:16},
+       {name:'jertydddd', age:20},
+       {name:'garfield', age:22}]">
+
+    <p>输入过滤:<input ng-model="name" type="text"></p>
+
+    <ul style="list-style-type:none">
+        <li>姓名，年龄</li>
+        <li ng-repeat="x in friends | filter:name">
+            {{ x.name + ' , ' + x.age }}
+        </li>
+    </ul>
+<p></p>
+</div>
+<div>
+    <ez-duang></ez-duang>
+</div>
+
+<div>
+    <span ez-hoverable>我是SPAN</span>
+    <button ez-hoverable>我是BUTTON</button>
+    <div ez-hoverable>我是DIV</div>
+    <textarea ez-hoverable>我是TEXTAREA</textarea>
+</div>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>数字训练</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/numberMemory.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" id="header">
+        </div>
+        <div class="col-md-12" id="main">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var memoryAry = new Array();//放记忆数字的数组
+    var main,header;//保存选择器ID
+    var settimeout; //倒计时变量
+    var absorbeTime;//保存专注时间变量
+    var ConTime;//保存默记时间变量
+    var gameTime;//保存填数字花时间的变量
+    var conHour = 0, conMinute = 0, conSecond = 0;//计时器时分秒
+    var timeK = 0;//计时
+    var timeKeepflag;//计时器变量
+    var conTimeStr,gameTimeStr;//保存获取计时或默认时间的变量
+    var Rowi = 20,Colj = 20;//创建表格的X行X列
+    //进入倒计时页面
+    function startCountdown(){
+        absorbeTime = $("absorbeTime").value;
+        absorbeTime = parseInt(absorbeTime);
+//        $("configure").style.display = "none";
+        main.removeChild($("configure"));
+        //创建倒计时
+        var div = createNode("","div",main);
+        div.id = "countdown";
+        var p = createNode(absorbeTime,"p",div);
+        p.id = "abtime";
+        var button = createNode("取消","button",div);
+        button.className = "btn btn-primary";
+        button.onclick = function(){
+            clearTimeout(settimeout);
+            loadConfigure();
+            return false;
+        };
+        countdownTime();
+    }
+    //进入默记阶段
+    function startConMermory(){
+        var timeDiv = createNode("","div",header);
+        timeDiv.id = "header_time";
+        var timekeep = createNode("00:00:00","span",timeDiv);
+        timekeep.id = "timekeep";
+        var buttonspan = createNode("","span",timeDiv);
+        buttonspan.className = "pull-right";
+        var button = createNode("取消","button",buttonspan);
+        button.className = "btn btn-primary";
+        button.onclick = function(){
+            startGame();
+            return false;
+        };
+        timeKeep();
+        createTableDiv(1);
+
+    }
+    //开始记忆填数字
+    function startGame(){
+        conTimeStr = getTimeStr();
+        stopTime();
+        //清零计时器
+        conHour = 0;
+        conMinute = 0;
+        conSecond = 0;
+        timeK = 0;
+        $("header").innerHTML = "";
+        var timeDiv = createNode("","div",header);
+        timeDiv.id = "header_time";
+        var timekeep = createNode("00:00:00","span",timeDiv);
+        timekeep.id = "timekeep";
+        var buttonspan = createNode("","span",timeDiv);
+        buttonspan.className = "pull-right";
+        var button = createNode("完成","button",buttonspan);
+        button.className = "btn btn-primary";
+        button.onclick = function(){
+            memoryResult();
+        };
+        timeKeep();
+        createTableDiv(2);
+        var m;
+        var inputs = document.getElementsByTagName("input");
+        var inputLength = inputs.length;
+        for(m = 0;m < inputLength;m++){
+            inputs[m].onkeyup = function(){
+                this.value = this.value.replace(/[^0-9]*/g,'');
+            }
+        }
+    }
+    //结束阶段，对比答案
+    function memoryResult(){
+        gameTimeStr = getTimeStr();
+        stopTime();
+        var errorNumber = 0;
+        var count = 0;
+        for(var i = 0;i < parseInt(Rowi + 1) ;i++) {
+            for (var j = 0; j < parseInt(Colj + 1); j++) {
+                if(i == 0 || j == 0){
+                    continue;
+                }
+                var inputName = document.getElementsByName("newMemory_" + i + "_" + j)[0];
+                if(!inputName){
+                    continue;
+                }
+                if(inputName.value=="" || inputName.value!=memoryAry[i][j]){
+                    errorNumber++;
+                }else{
+                    console.log(memoryAry[i][j]);
+                }
+            }
+        }
+        header.innerHTML = "";
+        var resultDiv = createNode("","div",header);
+        resultDiv.id = "header_score";
+        var scoreDiv = createNode("分数","div",resultDiv);
+        createNode("3","p",scoreDiv);
+        var conTimeDiv = createNode("默记时间","div",resultDiv);
+        createNode(conTimeStr,"p",conTimeDiv);
+        var gameTimeDiv = createNode("回想时间","div",resultDiv);
+        createNode(gameTimeStr,"p",gameTimeDiv);
+        var buttonspan = createNode("","span",resultDiv);
+        buttonspan.className = "pull-right";
+        var button = createNode("完成","button",buttonspan);
+        button.className = "btn btn-primary";
+        button.onclick = function(){
+            //保存当前用户成绩到数据库
+            loadConfigure();
+            return false;
+        };
+
+        createTableDiv(3);
+//        console.log("回想时间："+count);
+//        console.log("错误个数："+errorNumber);
+    }
+    //创建表格层
+    function createTableDiv(type){
+        var type = parseInt(type) ? parseInt(type) : 1;
+        var table = createTable(Rowi,Colj,type);
+        var tableDiv = createNode("","div",main);
+        tableDiv.appendChild(table);
+        tableDiv.id = "conmemroy";
+        clearMain();
+        main.appendChild(tableDiv) ;
+    }
+    //获取计时器或默记时间的字符串
+
+    function getTimeStr(){
+        var timeStr = "";
+        conHour = parseInt(conHour);
+        conMinute = parseInt(conMinute);
+        conSecond = parseInt(conSecond);
+        if(conHour > 0){
+            timeStr = conHour + " 时 ";
+        }
+        if(conMinute > 0){
+            timeStr += conMinute + " 分 ";
+        }
+        if(conSecond > 0){
+            timeStr += conSecond + " 秒 ";
+        }
+        return timeStr;
+    }
+    //默记计时器
+    function timeKeep(){
+        conHour = Math.floor(timeK / 60 / 60);
+        conMinute = Math.floor(timeK / 60 % 60);
+        conSecond = Math.floor(timeK % 60);
+        if(conHour < 10){
+            conHour = "0" + conHour;
+        }
+        if(conMinute < 10){
+            conMinute = "0" + conMinute;
+        }
+        if(conSecond < 10){
+            conSecond = "0" + conSecond;
+        }
+
+        $("timekeep").innerHTML = conHour + ":" + conMinute + ":" + conSecond;
+
+        timeK = timeK + 1;
+        timeKeepflag = setTimeout("timeKeep()", 1000);
+    }
+    function stopTime() {
+        clearTimeout(timeKeepflag);
+    }
+    //专注时间倒计时
+    function countdownTime(){
+        if(absorbeTime <= 0){
+            clearTimeout(settimeout);
+            startConMermory();
+        }else{
+
+            if(absorbeTime < 10){
+                $("abtime").innerHTML  = "0" + absorbeTime;
+            }else{
+                $("abtime").innerHTML = absorbeTime;
+            }
+            absorbeTime--;
+            settimeout = setTimeout("countdownTime()",1000);
+        }
+
+
+    }
+    //创建表格
+    function createTable(row,col,type){//type=1 填随机数字 2 放输入框  3 显示答案
+        var row = parseInt(row) ? parseInt(row + 1) : 2;
+        var col = parseInt(col) ? parseInt(col + 1) : 2;
+        var type = type ? type : 1;
+        var i,j;
+        var table = document.createElement("table");
+        var tbody = document.createElement("tbody");
+        table.className = "table table-bordered";
+        for(i = 0;i < row;i++) {
+            if(type == 1){
+                memoryAry[i] = new Array();
+            }
+            var tr = document.createElement("tr");
+            for (j = 0; j < col; j++) {
+                var createRandNumber;
+                var td = document.createElement("td");
+                td.style.width = parseInt(100 / col) + "%";
+                if(i == 0){
+                    if(j == 0){
+                        createRandNumber = document.createTextNode("");
+                        td.appendChild(createRandNumber);
+                    }else{
+                        createRandNumber = document.createTextNode(j);
+                        td.appendChild(createRandNumber);
+                    }
+
+                }else{
+                    if(j == 0){
+                        createRandNumber = document.createTextNode(i);
+                        td.appendChild(createRandNumber);
+
+                    }else{
+                        if(type == 1){
+                            var randNumber = getRandom(0, 9);
+                            memoryAry[i][j] = randNumber;
+                            createRandNumber = document.createTextNode(randNumber);
+                            td.appendChild(createRandNumber);
+                        }else if(type == 2){
+                            var input = document.createElement('input');
+                            input.type = "text";
+                            input.name = "newMemory_" + i + "_" + j;
+                            input.className = "input";
+                            input.style.width = "100%";
+                            input.style.height = "100%";
+                            input.style.border = "0";
+                            td.appendChild(input);
+                        }else if(type == 3){
+                            createRandNumber = document.createTextNode(memoryAry[i][j]);
+                            td.appendChild(createRandNumber);
+                            var br = document.createElement("br");
+                            td.appendChild(br);
+                            var span = document.createElement("span");
+                            var inputName = document.getElementsByName("newMemory_" + i + "_" + j)[0];
+                            if(!inputName || inputName.value==""){
+                                var spantext = document.createTextNode("");
+                            }else{
+                                var spantext = document.createTextNode(inputName.value);
+                            }
+
+                            span.appendChild(spantext);
+                            td.appendChild(span);
+
+                        }
+                    }
+
+                }
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+            table.appendChild(tbody);
+
+        }
+        return table;
+    }
+    function init(){
+        main = $("main");
+        header = $("header");
+        loadConfigure();
+    }
+    function loadConfigure(){
+        clearHeader();
+        clearMain();
+        main.innerHTML = "<div id='configure'>" + $("configure").innerHTML + "</div>";
+    }
+    function clearHeader(){
+        header.innerHTML = "";
+    }
+    function clearMain(){
+        main.innerHTML = "";
+    }
+    function $(id){
+        return document.getElementById(id);
+    }
+    function addLoadEvent(func){
+        var onload = window.onload;
+        if(typeof window.onload!='function'){
+
+            window.onload = func;
+        }else{
+            window.onload = function(){
+                onload();
+                func();
+            }
+        }
+    }
+    //获取随机数
+    function getRandom(startNumber,endNumber){
+        var startNumber = startNumber ? startNumber : 0;
+        var endNumber = endNumber ? endNumber : 100;
+        var numberDiff = parseInt(endNumber - startNumber);
+        return Math.floor(Math.random() * numberDiff + startNumber);
+    }
+    /*
+    * 创建节点
+    * @param  text 文字
+    * @param element 要创建的节点
+    * @param 创建所在的目标父节点
+     */
+    function createNode(text,element,object){
+        if(!element || !object){
+            return false;
+        }
+        var element = document.createElement(element);
+        if(text != ""){
+            var text = document.createTextNode(text);
+            element.appendChild(text);
+        }
+        object.appendChild(element);
+        return element;
+    }
+    addLoadEvent(init);
+</script>
+<div id="configure" style="display: none">
+    <form class="form-horizontal">
+        <div class="form-horizontal form-group">
+            <label class="col-sm-4 control-label">专注时间：</label>
+            <div class="col-sm-6">
+                <select name="absorbeTime" id="absorbeTime" class="form-control" style="width:20%;"> <option value="5">5</option> <option value="10">10</option> <option value="30">30</option> </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <button onclick="startCountdown()" class="btn btn-primary" type="button">开始</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
